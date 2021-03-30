@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔞🏳️‍🌈 Noah Haus - Gay artist</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #000 url(/images/menu.png);
+            background-size: 30px;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .toggle.active {
+            background: #000 url(/images/close.png);
+            background-size: 25px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        section {
+            padding: 100px;
+            min-height: 100vh;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .banner .imgSidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+        }
+
+        .banner .imgSidebar img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner .contentBx,
+        .sidebar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: calc(100% - 500px);
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px;
+        }
+
+        #logoText {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            background-color: black;
+            padding: 0 10px;
+            z-index: 1000;
+        }
+
+        #logoText.active {
+            pointer-events: none;
+            mix-blend-mode: multiply;
+            backdrop-filter: blur(2px);
+        }
+
+        .banner .contentBx h4 {
+            font-size: 1.5em;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .banner .contentBx h4 span {
+            font-size: 1.5em;
+            color: #00bcd4;
+            font-weight: 700;
+        }
+
+        .banner .contentBx h2 {
+            font-size: 3em;
+            color: #333;
+            line-height: 1em;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 20px 0;
+            font-weight: 300;
+        }
+
+        .btn {
+            background: #00bcd4;
+            color: #fff;
+            padding: 10px 30px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        .sidebar {
+            position: fixed;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: right 750ms;
+            padding: 40px;
+            z-index: 100;
+            right: -100%;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar ul li.active {
+            animation: fadeInBottom 500ms ease-out forwards;
+        }
+
+        main {
+            transition: filter 1500ms;
+        }
+
+        main.active {
+            filter: grayscale(100%);
+        }
+
+        .sidebar ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .sidebar ul li {
+            opacity: 0;
+        }
+
+        @keyframes fadeInBottom {
+            0% {
+                transform: translateY(15px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+            margin: 10px 0;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 500ms;
+        }
+
+        .sidebar ul li a:hover {
+            color: #00bcd4;
+        }
+
+        .sidebar ol {
+            position: absolute;
+            left: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            color: white;
+            z-index: 1000;
+        }
+
+        .sidebar ol li {
+            padding-right: 10px;
+        }
+
+        .sci,
+        #eighteen {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .sci li {
+            margin-left: 10px;
+            list-style: none;
+        }
+
+        .socialIcon.active {
+            color: white;
+            transition: color 500ms;
+        }
+
+        .socialIcon.active:hover {
+            color: #00bcd4;
+        }
+
+        body {
+            overflow: auto;
+        }
+
+        section,
+        body.active {
+            overflow: hidden;
+        }
+
+        .title {
+            width: 100%;
+            text-align: center;
+        }
+
+        .title h2 {
+            position: relative;
+            font-size: 1.8em;
+            letter-spacing: 1px;
+        }
+
+        .title p {
+            max-width: 700px;
+            display: inline-block;
+        }
+
+        .title h2::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: currentColor;
+        }
+
+        .about {
+            background: url('data:image/svg+xml,\
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox= "0 0 150 150">\
+  <text y = "1em" font-size= "125" opacity= "0.2">🌼</text>\
+  </svg>') #00bcd4;
+            background-size: 25vh 25vh;
+            /* read about this on w3schools, why did I decide to put two values */
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: 30% 10%;
+        }
+
+        .title.white h2,
+        .title.white p {
+            color: #fff;
+        }
+
+        .title.white h2:before {
+            background: #fff;
+        }
+
+        .about .content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .about .content .textBx {
+            min-width: 49%;
+            width: 49%;
+        }
+
+        .about .content .textBx p {
+            color: #fff;
+        }
+
+        .about .content .imgBx {
+            margin-left: 40px;
+        }
+
+        .about .content .imgBx img {
+            max-width: 100%;
+        }
+
+        /*
+Add spinner https://www.youtube.com/watch?v=wwJcYaJg8Mc
+
+Advanced CSS Tricks for Web Developers
+https://www.youtube.com/watch?v=3c5uVqkYcKA
+
+... and from the same guy...
+https://www.youtube.com/watch?v=wfaDzSL6ll0
+
+Here he makes a very simple of the dinosaur game. Watch it when redoing Charly
+https://www.youtube.com/watch?v=i7nIutSLvdU
+
+Smiley background is from CSS Secrets...
+(Rewatch video)
+https://www.youtube.com/watch?v=vs34f9FiHps
+*/
+
+        .services {
+            background-image: url("https://www.transparenttextures.com/patterns/zig-zag.png");
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+
+            background-attachment: fixed;
+        }
+
+        .work {
+            background-color: #00bcd4;
+            background-color: white;
+            background-position: center center;
+        }
+
+        .sidebar,
+        #logoText,
+        .toggle {
+            display: none;
+        }
+
+        #mc_embed_signup h2 {
+            font-family: Bangers;
+        }
+
+        .socialIcon,
+        #mc_embed_signup h2,
+        #eighteen {
+            color: black;
+            font-size: 4.75em;
+        }
+
+        * {
+            user-select: none;
+        }
+
+        #eighteen {
+            left: 30px;
+        }
+
+        form input {
+            width: 100%;
+        }
+
+        .email {
+            margin-top: 3vh;
+        }
+
+        form .button {
+            margin-top: 1vh;
+        }
+
+        @media only screen and (max-width: 720px) {
+
+            #mce-EMAIL,
+            #mc-embedded-subscribe,
+            #mc_embed_signup h2 {
+                padding-right: 2vw;
+                width: 85%;
+            }
+
+            #mc_embed_signup h2 {
+                font-size: 3.75em;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="toggle" onclick="toggleMenu()"></div>
+    <a href="#home">
+        <h5 id="logoText">NOAH<br>HAUS</h5>
+    </a>
+    <main>
+        <section class="banner" id="home">
+            <div class="imgSidebar">
+                <img src="noah1.jpeg" alt="">
+            </div>
+            <div class="contentBx">
+
+                <div>
+
+                    <!-- Begin Mailchimp Signup Form -->
+                    <div id="mc_embed_signup">
+                        <form
+                            action="https://haus.us1.list-manage.com/subscribe/post?u=6e8810565e77b9f672be00d46&amp;id=bc786831fe"
+                            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                            class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                                <h2>Oh yes...<br>I'm coming!</h2>
+                                <div class="mc-field-group">
+                                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL"
+                                        placeholder="Your e-mail address...">
+                                </div>
+                                <!--
+                                <div class="mc-field-group">
+                                    <label for="mce-FNAME">First Name </label>
+                                    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                                </div>
+                                <div class="mc-field-group">
+                                    <label for="mce-LNAME">Last Name </label>
+                                    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                                </div>
+                            -->
+                                <!--
+                                <div class="mc-field-group size1of2">
+                                    <label for="mce-BIRTHDAY-month">Birthday </label>
+                                    <div class="datefield">
+                                        <span class="subfield monthfield"><input class="birthday " type="text"
+                                                pattern="[0-9]*" value="" placeholder="MM" size="2" maxlength="2"
+                                                name="BIRTHDAY[month]" id="mce-BIRTHDAY-month"></span> /
+                                        <span class="subfield dayfield"><input class="birthday " type="text"
+                                                pattern="[0-9]*" value="" placeholder="DD" size="2" maxlength="2"
+                                                name="BIRTHDAY[day]" id="mce-BIRTHDAY-day"></span>
+                                        <span class="small-meta nowrap">( mm / dd )</span>
+                                    </div>
+                                </div>
+                                -->
+                                <div id="mce-responses" class="clear">
+                                    <div class="response" id="mce-error-response" style="display:none"></div>
+                                    <div class="response" id="mce-success-response" style="display:none"></div>
+                                </div>
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+                                        name="b_6e8810565e77b9f672be00d46_bc786831fe" tabindex="-1" value=""></div>
+                                <div class="clear"><input type="submit" value="Subscribe!" name="subscribe"
+                                        id="mc-embedded-subscribe" class="button btn"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--End mc_embed_signup-->
+
+        </section>
+        <!--
+        <section class="about" id="about">
+            <div class="title white">
+                <h2>About Me</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="content">
+                <div class="textBx">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus id quis vero ex, autem dolore
+                        perspiciatis odit, iste est corrupti amet non consequatur nemo optio quidem reiciendis sed
+                        repellat
+                        quae labore soluta a. Sunt illo iure, ex natus, facilis doloremque dicta, iusto inventore quos
+                        sequi
+                        quisquam delectus dolor quod odit! Nesciunt soluta suscipit, enim eius et sunt ipsa cum sequi
+                        eos
+                        eligendi consequuntur blanditiis?<br><br>Dignissimos impedit dicta eveniet
+                        atque neque est deserunt. Dolorem architecto optio, aliquid saepe maxime eligendi dolorum ex
+                        exercitationem ipsum provident excepturi ipsa, quia dolore? Natus ipsam architecto mollitia
+                        sequi
+                        beatae illum amet repudiandae, perspiciatis cum nulla. Provident, modi totam! Sunt eveniet
+                        voluptatibus vitae modi eos, minima delectus atque odit porro odio, vero recusandae?</p>
+                </div>
+                <div class="imgBx">
+                    <img src="/images/bg1.jpg" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="services" id="services">
+            <div class="title">
+                <h2>Services</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius iusto expedita nulla quidem tenetur
+                    delectus iste mollitia est nisi voluptatum!</p>
+            </div>
+        </section>
+        <section class="work" id="work">work</section>
+        <section class="contact" id="contact">contact</section>
+        -->
+    </main>
+    <section class="sidebar">
+        <nav>
+            <ul class="menu">
+                <li class="menuItem"><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li class="menuItem"><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li class="menuItem"><a href="#services" onclick="toggleMenu()">Services</a></li>
+                <li class="menuItem"><a href="#work" onclick="toggleMenu()">Work</a></li>
+                <li class="menuItem"><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            </ul>
+            <ol>
+                <li>IMPRESSUM</li>
+                <li>DATENSCHUTZ</li>
+            </ol>
+        </nav>
+    </section>
+    <ul class="sci">
+        <li><a href="https://twitter.com/noah_haus" target="_blank" class="socialIcon"><i class="fa fa-twitter"></i></a>
+        </li>
+    </ul>
+
+
+
+</body>
+<script>
+    function toggleMenu() {
+        const menuToggle = document.querySelector(".toggle");
+        const sidebar = document.querySelector(".sidebar");
+        const body = document.querySelector("body");
+        const main = document.querySelector("main");
+        const logoText = document.querySelector("#logoText");
+        const sci = document.querySelector(".sci");
+        const menuItems = document.querySelectorAll(".menuItem");
+        const socialIcons = document.querySelectorAll(".socialIcon");
+        let animationDelay = 250;
+        menuToggle.classList.toggle("active");
+        sidebar.classList.toggle("active");
+        body.classList.toggle("active");
+        main.classList.toggle("active");
+        logoText.classList.toggle("active");
+        for (let i = 0; i < menuItems.length; i++) {
+            menuItems[i].classList.add("active");
+            menuItems[i].style.animationDelay = animationDelay + "ms";
+            animationDelay += 75;
+        }
+        for (let i = 0; i < socialIcons.length; i++) {
+            socialIcons[i].classList.toggle("active");
+        }
+    }
+    // https://www.youtube.com/watch?v=VoogNBSnpcA&t=2409s
+</script>
+
+</html>
